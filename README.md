@@ -1,11 +1,11 @@
 # YouTube Private  Video Downloader
-
+----------
 This batch script automates the process of downloading a YouTube video and audio separately, and then merging them into a single video file. It ensures that the required tools (Python, yt-dlp, and FFmpeg) are installed and sets up everything for you.
 
 ---
 
 ## Prerequisites
----
+
 * Python: The script checks if Python is installed. If it's not, the script automatically installs Python for you.
 * yt-dlp: This tool is used to download YouTube videos and audio.
 * FFmpeg: Required for merging the video and audio files into one file.
@@ -13,7 +13,7 @@ Additionally, you will need a cookies.txt file for downloading videos that requi
 ---
 
 ## Features
----
+
 * Automatically checks and installs Python if it's not installed.
 * Installs yt-dlp using Python's package manager (pip).
 * Install FFmpeg if it's not already installed and adds it to your system's PATH.
@@ -23,13 +23,13 @@ Additionally, you will need a cookies.txt file for downloading videos that requi
 ---
 
 ## Requirements
----
+
 1. Cookies File: You need to have a cookies.txt file in the same directory as the script. This is used by yt-dlp to authenticate and download videos that require a login or have age restrictions.
 2. Windows: This script is designed to run on Windows OS.
 ---
 
 ## Setup Instructions
----
+
 1. Download the Script:
    * Save the batch script to your computer.
 2. Prepare the cookies.txt File:
@@ -49,7 +49,7 @@ Additionally, you will need a cookies.txt file for downloading videos that requi
 
 
 ## EXAMPLE USAGE
----
+
 1. Run the batch script.
 2. When prompted:
   * Enter the YouTube video URL: https://www.youtube.com/watch?v=asdfasdfasdf
@@ -58,7 +58,7 @@ Additionally, you will need a cookies.txt file for downloading videos that requi
 ---
 
 ## Troubleshooting
----
+
 * Cookies File Missing: If the cookies.txt file is missing, the script will notify you and ask you to place it in the same folder as the batch file.
 * FFmpeg Installation Issues: If FFmpeg fails to install or isn't recognized in your system's PATH, make sure to check that the C:\Windows\System32 folder is accessible or manually install FFmpeg.
-
+---
