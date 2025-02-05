@@ -3,5 +3,5 @@
 ## Usage
 
 ```bash
-youtube_donwloader.bat "https://www.youtube.com/watch?v=abcd1234" "file_name"
+youtube_downloader.bat "https://www.youtube.com/watch?v=abcd1234" "file_name"
 ```
