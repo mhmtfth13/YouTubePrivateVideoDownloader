@@ -36,12 +36,23 @@ if %errorlevel% neq 0 (
 )
 
 :: Kullanıcıdan URL ve Dosya Adı bilgilerini al
+set SCRIPT_PATH=%~dp0
+set COOKIE_FILE=%SCRIPT_PATH%cookies.txt
+
+if not exist "%COOKIE_FILE%" (
+    echo Hata: cookies.txt dosyası bulunamadı!
+    echo Lütfen cookies.txt dosyasını bu bat dosyası ile aynı klasöre kopyalayın.
+    pause
+    exit /b 1
+)
+
 set /p URL="Indirmek istediginiz video URL'sini girin: "
 set /p OUTPUT="Dosya adini girin (uzantisiz): "
 
-:: Video ve Ses dosyasını indir
-yt-dlp --cookies www.youtube.com_cookies.txt "%URL%" -f bestvideo -o %OUTPUT%.mp4
-yt-dlp --cookies www.youtube.com_cookies.txt "%URL%" -f bestaudio -o %OUTPUT%.m4a
+echo İndirme başlıyor...
+:: Video ve ses dosyasını indir
+yt-dlp --cookies "%COOKIE_FILE%" "%URL%" -f bestvideo -o %OUTPUT%.mp4
+yt-dlp --cookies "%COOKIE_FILE%" "%URL%" -f bestaudio -o %OUTPUT%.m4a
 
 :: Video ve Ses dosyasını birleştir
 ffmpeg -i %OUTPUT%.mp4 -i %OUTPUT%.m4a -c copy %OUTPUT%_final.mp4
@@ -50,5 +61,5 @@ ffmpeg -i %OUTPUT%.mp4 -i %OUTPUT%.m4a -c copy %OUTPUT%_final.mp4
 del %OUTPUT%.mp4
 del %OUTPUT%.m4a
 
-echo Indirme ve birlestirme tamamlandi!
+echo İndirme ve birlestirme tamamlandi!
 pause
