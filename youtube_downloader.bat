@@ -20,7 +20,7 @@ echo yt-dlp yüklendi.
 
 :: FFmpeg'i indir ve Path'e ekle
 echo FFmpeg yukleniyor...
-powershell -Command "Invoke-WebRequest -Uri https://ffmpeg.org/releases/ffmpeg-release-i686-static.tar.xz -OutFile ffmpeg.tar.xz"
+powershell -Command "Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip -OutFile ffmpeg.zip"
 tar -xf ffmpeg.tar.xz
 del ffmpeg.tar.xz
 move ffmpeg-*-static\ffmpeg.exe C:\Windows\System32
