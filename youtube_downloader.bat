@@ -13,22 +13,31 @@ if %errorlevel% neq 0 (
 )
 
 :: yt-dlp'yi yükle
-echo yt-dlp yükleniyor...
+echo yt-dlp yukleniyor...
 python -m pip install --upgrade pip
 python -m pip install yt-dlp
 echo yt-dlp yüklendi.
 
-:: FFmpeg'i indir ve Path'e ekle
-echo FFmpeg yukleniyor...
-powershell -Command "Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip -OutFile ffmpeg.zip"
-tar -xf ffmpeg.tar.xz
-del ffmpeg.tar.xz
-move ffmpeg-*-static\ffmpeg.exe C:\Windows\System32
-echo FFmpeg yuklendi ve path'e eklendi.
+:: FFmpeg'in sistemde kurulu olup olmadığını kontrol et
+where ffmpeg >nul 2>nul
+if %errorlevel% neq 0 (
+    echo FFmpeg bulunamadi, yukleniyor...
+    powershell -Command "Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip -OutFile ffmpeg.zip"
+    
+    :: FFmpeg'i çıkart
+    powershell -Command "Expand-Archive -Path ffmpeg.zip -DestinationPath ."
+    del ffmpeg.zip
+    
+    :: FFmpeg dosyasını doğru dizine taşı
+    move ffmpeg-master-latest-win64-gpl-shared\bin\ffmpeg.exe C:\Windows\System32
+    echo FFmpeg yuklendi ve path'e eklendi.
+) else (
+    echo FFmpeg zaten sistemde mevcut.
+)
 
-:: URL ve Dosya Adı parametrelerini al
-set URL=%1
-set OUTPUT=%2
+:: Kullanıcıdan URL ve Dosya Adı bilgilerini al
+set /p URL="Indirmek istediginiz video URL'sini girin: "
+set /p OUTPUT="Dosya adini girin (uzantisiz): "
 
 :: Video ve Ses dosyasını indir
 yt-dlp --cookies www.youtube.com_cookies.txt "%URL%" -f bestvideo -o %OUTPUT%.mp4
