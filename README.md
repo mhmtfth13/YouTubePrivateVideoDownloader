@@ -1,6 +1,6 @@
 # YouTube Private  Video Downloader
 ----------
-This batch script automates the process of downloading a YouTube video and audio separately, and then merging them into a single video file. It ensures that the required tools (Python, yt-dlp, and FFmpeg) are installed and sets up everything for you.
+This batch script automates the process of downloading a shared Private YouTube video and audio separately, and then merging them into a single video file. It ensures that the required tools (Python, yt-dlp, and FFmpeg) are installed and sets up everything for you.
 
 ---
 
